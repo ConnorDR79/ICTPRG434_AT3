@@ -26,6 +26,7 @@
             display: flex;
             gap: 15px;
             margin-bottom: 20px;
+            flex-direction: column;
         }
 
         /* Styling for each weather data box */
@@ -71,21 +72,25 @@
         <div class="box">
             <h3>Temperature</h3>
             <p>{{ current_temp }} °C</p>
+            <img src="{{ url_for('static', filename='temp_graph.png') }}" alt="Temperature Graph">
         </div>
         
         <div class="box">
             <h3>Humidity</h3>
             <p>{{ current_humidity }} %</p>
+            <img src="{{ url_for('static', filename='humidity_graph.png') }}" alt="Relative Humidity Graph">
         </div>
 
         <div class="box">
             <h3>Wind Speed</h3>
             <p>{{ current_wind_spd }} km/h</p>
+            <img src="{{ url_for('static', filename='wind_graph.png') }}" alt="Wind Speed Graph">
         </div>
 
         <div class="box">
             <h3>Rainfall</h3>
             <p>{{ current_rain }} mm</p>
+            <img src="{{ url_for('static', filename='rain_graph.png') }}" alt="rainfall Graph">
         </div>
 
     </div>
