@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <!-- ========================================
+         ICTPRG434 AT3: Geelong Weather Dashboard
+         Group Members: Connor Jake
+         Jake Fensom HTML 10/06/2026
+         ======================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, intial-scale=1.0">
+    <title>Geelong Weather Dashboard</title>
+    
+    <!-- Simple CSS styling  -->
+    <style>
+        body { 
+            background-color: #f4f7f6; 
+            font-family: system-ui, sans-serif;
+            margin: 20px; 
+        }
+        h1 {
+            color: #333
+        }
+
+        /* Makes weather boxes sit side-by-side */
+        .row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for each weather data box */
+        .box {
+            background-color: #ffffff;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            flex: 1;    /* Makes all boxes equal width */
+            text-align: center;
+        }
+
+        /* Styling for the graph section */
+        .graph-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .graph-placeholder {
+            background-color: #e0e0e0;
+            height: 200px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Title -->
+    <h1>Geelong Racecourses Weather Dashboard</h1>
+    <p>Last updated: {{ last_updated }}</p>
+
+    <hr>    <!-- Thematic break -->
+
+    <!-- Row of Current Conditions -->
+    <h2>Current Conditions</h2>
+    <div class="row">
+
+        <div class="box">
+            <h3>Temperature</h3>
+            <p>{{ current_temp }}°C</p>
+        </div>
+        
+        <div class="box">
+            <h3>Humidity</h3>
+            <p>{{ current_humidity }}%</p>
+        </div>
+
+        <div class="box">
+            <h3>Wind Speed</h3>
+            <p>{{ current_wind_spd }} km/h</p>
+        </div>
+
+        <div class="box">
+            <h3>Rainfall</h3>
+            <p>{{ current_rain }} mm</p>
+        </div>
+
+    </div>
+   
+</body>
+</html>
