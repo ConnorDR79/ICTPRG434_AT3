@@ -22,6 +22,11 @@ else:
 
 #Function to generate Temperature Graph
 def getTemp():
+    #Check if data was actually retrieved before parsing
+    if not data or "observations" not in data:
+        print("Skipping graph generation: No data available.")
+        return
+    
     #Initialise list variables to store x-axis (Time) and y-axis values (Temperature)
     x = []
     y = []
@@ -74,6 +79,11 @@ def getTemp():
 
 #Function to generate Wind Graph
 def getWind():
+    #Check if data was actually retrieved before parsing
+    if not data or "observations" not in data:
+        print("Skipping graph generation: No data available.")
+        return
+    
     #Initialise list variables to store x-axis (Time) and y-axis values (Wind)
     x = []
     y = []
@@ -129,6 +139,11 @@ def getWind():
 
 #Function to generate Humidity Graph
 def getHum():
+    #Check if data was actually retrieved before parsing
+    if not data or "observations" not in data:
+        print("Skipping graph generation: No data available.")
+        return
+
     #Initialise list variables to store x-axis (Time) and y-axis values (Humidity)
     x = []
     y = []
@@ -184,6 +199,11 @@ def getHum():
 
 #Function to generate Rainfall Graph
 def getRain():
+    #Check if data was actually retrieved before parsing
+    if not data or "observations" not in data:
+        print("Skipping graph generation: No data available.")
+        return
+    
     #Initialise list variables to store x-axis (Time) and y-axis values (Rainfall)
     x = []
     y = []
@@ -217,7 +237,7 @@ def getRain():
 
     #Display time labels for every hour of the last 12 hours
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%I:%M %p'))
-    ax.xaxis.set_major_locator(mdates.HourLocator(interval=1))
+    ax.xaxis.set_major_locator(mdates.HourLocator(interval=2))
 
     #Label graph and it axes
     ax.set_ylim(bottom=0)
