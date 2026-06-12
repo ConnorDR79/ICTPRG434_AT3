@@ -12,8 +12,13 @@ headers = {
 response = requests.get(f"https://www.bom.gov.au/fwo/IDV60801/IDV60801.94857.json", headers=headers)
 
 #If above request succeeds, convert JSON response into python dictionary
+#Added error handling
+data = {}   #Initialize default empty dictionary
+
 if response.status_code == 200:
     data = response.json()
+else:
+    print("API Failed!")
 
 #Function to generate Temperature Graph
 def getTemp():
@@ -43,12 +48,17 @@ def getTemp():
     y.reverse()
 
     #Create and format the graph itself
+    #With smaller markers
     fig, ax = plt.subplots(figsize=(10, 5))
-    ax.plot(x, y, marker='o', linewidth=2)
+    ax.plot(x, y, color='#1f77b4', marker='.', markersize=6, linewidth=1.5)
 
-    #Display time labels for every hour of the last 12 hours
+    #Display time labels for every 2 hours to stop overlapping
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%I:%M %p'))
-    ax.xaxis.set_major_locator(mdates.HourLocator(interval=1))
+    ax.xaxis.set_major_locator(mdates.HourLocator(interval=2))
+
+    #Clean borders (Removes the unnecessary top/right box outlines)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
 
     #Label graph and it axes
     ax.set_title("Temperature - Last 12 Hours")
@@ -92,12 +102,17 @@ def getWind():
     y.reverse()
 
     #Create and format the graph itself
+    #With smaller markers
     fig, ax = plt.subplots(figsize=(10, 5))
-    ax.plot(x, y, marker='o', linewidth=2)
+    ax.plot(x, y, color='#1f77b4', marker='.', markersize=6, linewidth=1.5)
 
-    #Display time labels for every hour of the last 12 hours
+    #Display time labels for every 2 hours to stop overlapping
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%I:%M %p'))
-    ax.xaxis.set_major_locator(mdates.HourLocator(interval=1))
+    ax.xaxis.set_major_locator(mdates.HourLocator(interval=2))
+
+    #Clean borders (Removes the unnecessary top/right box outlines)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
 
     #Label graph and it axes
     ax.set_ylim(bottom=0)
@@ -142,12 +157,17 @@ def getHum():
     y.reverse()
 
     #Create and format the graph itself
+    #With smaller markers
     fig, ax = plt.subplots(figsize=(10, 5))
-    ax.plot(x, y, marker='o', linewidth=2)
+    ax.plot(x, y, color='#1f77b4', marker='.', markersize=6, linewidth=1.5)
 
-    #Display time labels for every hour of the last 12 hours
+    #Display time labels for every 2 hours to stop overlapping
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%I:%M %p'))
-    ax.xaxis.set_major_locator(mdates.HourLocator(interval=1))
+    ax.xaxis.set_major_locator(mdates.HourLocator(interval=2))
+
+    #Clean borders (Removes the unnecessary top/right box outlines)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
 
     #Label graph and it axes
     ax.set_ylim(0, 100)
@@ -191,9 +211,9 @@ def getRain():
     x.reverse()
     y.reverse()
 
-    #Create and format the graph itself
+    #Create and format the graph itself with narrow bars
     fig, ax = plt.subplots(figsize=(10, 5))
-    ax.bar(x, y, width=0.05)
+    ax.bar(x, y, width=timedelta(minutes=20), color='#1f77b4', edgecolor='black')
 
     #Display time labels for every hour of the last 12 hours
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%I:%M %p'))
