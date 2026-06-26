@@ -1,1 +1,6 @@
 __pycache__/
+
+static/temp_graph.png
+static/wind_graph.png
+static/humidity_graph.png
+static/rain_graph.png

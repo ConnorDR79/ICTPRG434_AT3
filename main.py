@@ -221,7 +221,13 @@ def getRain():
     for observation in observations:
         observation_time = datetime.strptime(observation["local_date_time_full"], "%Y%m%d%H%M%S")
 
-        rain = float(observation.get("rain_trace", 0))
+        rain_value = observation.get("rain_trace", 0)
+        #Make sure getting rain value still works if BOM API returns "-" as a value
+        if rain_value == "-":
+            rain = 0.0
+        else:
+            rain = float(rain_value)
+
 
         if observation_time >= last_time:
             x.append(observation_time)
