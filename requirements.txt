@@ -1,0 +1,4 @@
+Requirements for this app are:
+Flask
+Matplotlib
+Requests
